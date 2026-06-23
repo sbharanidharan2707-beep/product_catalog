@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Product Details</h1>
+</header>
+
+<div id="details" class="details-box"></div>
+
+<script>
+
+const products = {
+Laptop:{
+price:"₹50000",
+description:"High performance laptop",
+image:"image/download (12).jpeg"
+},
+
+Mobile:{
+price:"₹20000",
+description:"Latest Android smartphone",
+image:"image/shopping.webp"
+},
+
+Headphone:{
+price:"₹3000",
+description:"Wireless noise cancelling headphone",
+image:"image/download (2).jpeg"
+}
+};
+
+const params = new URLSearchParams(window.location.search);
+const productName = params.get("name");
+
+const product = products[productName];
+
+if(product){
+document.getElementById("details").innerHTML = `
+<img src="${product.image}" width="250">
+<h2>${productName}</h2>
+<p>${product.price}</p>
+<p>${product.description}</p>
+`;
+}
+else{
+document.getElementById("details").innerHTML =
+"<h2>Product Not Found</h2>";
+}
+
+</script>
+
+</body>
+</html>
